@@ -80,6 +80,9 @@ def read_config_file(filename: str,
 
     return dict(c for c in cfg if c)
 
+def defaultdict_func():
+    return defaultdict(dict)
+
 
 def merge_config(configdata: Iterable[Dict]) -> Dict:
     """
@@ -93,7 +96,7 @@ def merge_config(configdata: Iterable[Dict]) -> Dict:
     scalars), update them (if they are dicts) or append to them (if they are
     lists).
     """
-    out_config = defaultdict(lambda: defaultdict(dict))
+    out_config = defaultdict(defaultdict_func)
     for sourcedata in configdata:
 
 
